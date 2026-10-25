@@ -1,0 +1,24 @@
+digraph G {
+graph [rankdir=LR, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.65", splines="ortho", fontname="Arial", labelloc="t", fontsize=20, labeljust="c"];
+node [fontname="Arial", fontsize=11, shape=box, style="rounded,filled", fillcolor="#F4F7FB", color="#334155", fontcolor="#0F172A", margin="0.13,0.09"];
+edge [fontname="Arial", fontsize=9, color="#475569", fontcolor="#334155", arrowsize=0.7];
+
+U [label="Użytkownik", shape=plaintext, fillcolor="white"];
+A [label="Administrator / Trener", shape=plaintext, fillcolor="white"];
+subgraph cluster_system { label="SYSTEM ZARZĄDZANIA DRUŻYNĄ PIŁKARSKĄ"; color="#64748B"; style="rounded";
+p [label="Wyświetl zawodników", shape=ellipse];
+s [label="Wyświetl statystyki", shape=ellipse];
+t [label="Wyświetl terminarz", shape=ellipse];
+g [label="Wyświetl tabelę strzelców", shape=ellipse];
+ap [label="Dodaj zawodnika", shape=ellipse];
+ep [label="Edytuj zawodnika", shape=ellipse];
+dp [label="Usuń zawodnika", shape=ellipse];
+am [label="Dodaj mecz", shape=ellipse];
+em [label="Edytuj mecz", shape=ellipse];
+dm [label="Usuń mecz", shape=ellipse];
+}
+U -> p [dir=none]; U -> s [dir=none]; U -> t [dir=none]; U -> g [dir=none];
+A -> p [dir=none]; A -> s [dir=none]; A -> t [dir=none]; A -> g [dir=none];
+A -> ap [dir=none]; A -> ep [dir=none]; A -> dp [dir=none]; A -> am [dir=none]; A -> em [dir=none]; A -> dm [dir=none];
+
+}

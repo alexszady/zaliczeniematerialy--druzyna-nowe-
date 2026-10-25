@@ -1,0 +1,63 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+class Drużyna {
+    - nazwa: String
+    - liga: String
+    - sezon: String
+    --
+    + wyswietlZawodnikow()
+    + wyswietlTerminarz()
+}
+
+class Zawodnik {
+    - id: int
+    - imie: String
+    - nazwisko: String
+    - numer: int
+    - pozycja: String
+    - wiek: int
+    --
+    + dodaj()
+    + edytuj()
+    + usun()
+    + wyswietlStatystyki()
+}
+
+class Statystyki {
+    - mecze: int
+    - gole: int
+    - asysty: int
+    - kartki: int
+    --
+    + obliczStatystyki()
+}
+
+class Mecz {
+    - id: int
+    - przeciwnik: String
+    - data: Date
+    - miejsce: String
+    - wynik: String
+    - status: String
+    --
+    + dodaj()
+    + edytuj()
+    + usun()
+}
+
+class TabelaStrzelcow {
+    - pozycja: int
+    - gole: int
+    --
+    + wyswietlTabele()
+    + sortujPoGolach()
+}
+
+Drużyna "1" o-- "1..*" Zawodnik
+Zawodnik "1" -- "1" Statystyki
+Drużyna "1" -- "0..*" Mecz
+TabelaStrzelcow "1" -- "1..*" Zawodnik
+
+@enduml

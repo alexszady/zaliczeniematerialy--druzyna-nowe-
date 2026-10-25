@@ -1,0 +1,9 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.65", splines="ortho", fontname="Arial", labelloc="t", fontsize=20, labeljust="c"];
+node [fontname="Arial", fontsize=11, shape=box, style="rounded,filled", fillcolor="#F4F7FB", color="#334155", fontcolor="#0F172A", margin="0.13,0.09"];
+edge [fontname="Arial", fontsize=9, color="#475569", fontcolor="#334155", arrowsize=0.7];
+
+start [label="Start",shape=circle,fillcolor="#DCFCE7"]; menu [label="Otwórz sekcję Zawodnicy"]; request [label="GET /api/players"]; db [label="Odczytaj players z SQLite",shape=cylinder]; response [label="Zwróć listę zawodników"]; display [label="Wyświetl listę"]; end [label="Koniec",shape=doublecircle,fillcolor="#DCFCE7"];
+start -> menu -> request -> db -> response -> display -> end;
+
+}

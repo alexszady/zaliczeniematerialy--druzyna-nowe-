@@ -1,0 +1,9 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.65", splines="ortho", fontname="Arial", labelloc="t", fontsize=20, labeljust="c"];
+node [fontname="Arial", fontsize=11, shape=box, style="rounded,filled", fillcolor="#F4F7FB", color="#334155", fontcolor="#0F172A", margin="0.13,0.09"];
+edge [fontname="Arial", fontsize=9, color="#475569", fontcolor="#334155", arrowsize=0.7];
+
+s [label="Start",shape=circle,fillcolor="#DCFCE7"]; f [label="Otwórz formularz"]; i [label="Podaj imię, numer, pozycję i statystyki"]; v [label="Dane wymagane poprawne?",shape=diamond,style=filled,fillcolor="#FEF3C7"]; err [label="Pokaż komunikat błędu"]; post [label="POST /api/players"]; db [label="INSERT do players",shape=cylinder]; ok [label="Odśwież dane / potwierdź"]; e [label="Koniec",shape=doublecircle,fillcolor="#DCFCE7"];
+s -> f -> i -> v; v -> err [label="Nie"]; err -> i; v -> post [label="Tak"]; post -> db -> ok -> e;
+
+}

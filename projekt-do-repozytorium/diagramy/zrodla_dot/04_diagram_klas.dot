@@ -1,0 +1,18 @@
+digraph G {
+graph [rankdir=LR, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.65", splines="ortho", fontname="Arial", labelloc="t", fontsize=20, labeljust="c"];
+node [fontname="Arial", fontsize=11, shape=box, style="rounded,filled", fillcolor="#F4F7FB", color="#334155", fontcolor="#0F172A", margin="0.13,0.09"];
+edge [fontname="Arial", fontsize=9, color="#475569", fontcolor="#334155", arrowsize=0.7];
+
+Admin [label="{AdministratorTrener|+ zarządzajZawodnikami()\l+ zarządzajMeczami()\l}"];
+User [label="{Użytkownik|+ wyswietlZawodnikow()\l+ wyswietlStatystyki()\l+ wyswietlTerminarz()\l+ wyswietlTabeleStrzelcow()\l}"];
+System [label="{SystemDruzyny|+ loadData()\l+ renderPlayers()\l+ renderMatches()\l+ renderScorers()\l+ updateDashboard()\l}"];
+Player [label="{Player|+ id: int\l+ name: string\l+ number: int\l+ position: string\l+ goals: int\l+ assists: int\l+ appearances: int\l}"];
+Match [label="{Match|+ id: int\l+ opponent: string\l+ match_date: date\l+ match_time: string\l+ location: string\l+ result: string\l}"];
+DB [label="{SQLiteDatabase|+ getPlayers()\l+ addPlayer()\l+ updatePlayer()\l+ deletePlayer()\l+ getMatches()\l+ addMatch()\l+ updateMatch()\l+ deleteMatch()\l}"];
+User -> System [label="korzysta"];
+Admin -> System [label="zarządza"];
+System -> DB [label="wywołuje API"];
+DB -> Player [label="odczyt / zapis"];
+DB -> Match [label="odczyt / zapis"];
+
+}

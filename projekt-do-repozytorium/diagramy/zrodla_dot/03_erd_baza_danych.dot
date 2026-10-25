@@ -1,0 +1,11 @@
+digraph G {
+graph [rankdir=LR, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.65", splines="ortho", fontname="Arial", labelloc="t", fontsize=20, labeljust="c"];
+node [fontname="Arial", fontsize=11, shape=box, style="rounded,filled", fillcolor="#F4F7FB", color="#334155", fontcolor="#0F172A", margin="0.13,0.09"];
+edge [fontname="Arial", fontsize=9, color="#475569", fontcolor="#334155", arrowsize=0.7];
+
+players [shape=record, fillcolor="#EAF2FF", label="{ZAWODNIK / players|PK id : INTEGER|name : TEXT NOT NULL|number : INTEGER NOT NULL|position : TEXT NOT NULL|goals : INTEGER DEFAULT 0|assists : INTEGER DEFAULT 0|appearances : INTEGER DEFAULT 0}"];
+matches [shape=record, fillcolor="#EAF2FF", label="{MECZ / matches|PK id : INTEGER|opponent : TEXT NOT NULL|match_date : TEXT NOT NULL|match_time : TEXT|location : TEXT|result : TEXT DEFAULT '-'}"];
+note [shape=note, label="W aktualnym kodzie players i matches\nnie mają zdefiniowanego klucza obcego\nani relacji między sobą.", fillcolor="#FFF7D6", color="#B45309"];
+note -> players [style=dotted, arrowhead=none]; note -> matches [style=dotted, arrowhead=none];
+
+}

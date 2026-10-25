@@ -1,0 +1,31 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.65", splines="polyline", fontname="Arial", labelloc="t", fontsize=20, labeljust="c"];
+node [fontname="Arial", fontsize=11, shape=box, style="rounded,filled", fillcolor="#F4F7FB", color="#334155", fontcolor="#0F172A", margin="0.13,0.09"];
+edge [fontname="Arial", fontsize=9, color="#475569", fontcolor="#334155", arrowsize=0.7];
+U [label="Administrator / Trener",shape=box,fillcolor="#E0F2FE"];
+S [label="Interfejs WWW",shape=box,fillcolor="#E0F2FE"];
+A [label="Express API",shape=box,fillcolor="#E0F2FE"];
+D [label="SQLite",shape=cylinder,fillcolor="#E0F2FE"];
+e0 [label="Wypełnia formularz",shape=box,fontsize=10];
+e1 [label="POST /api/players",shape=box,fontsize=10];
+e2 [label="Walidacja wymaganych pól",shape=box,fontsize=10];
+e3 [label="INSERT INTO players",shape=box,fontsize=10];
+e4 [label="ID nowego rekordu",shape=box,fontsize=10];
+e5 [label="Odpowiedź 201 + zawodnik",shape=box,fontsize=10];
+e6 [label="Potwierdzenie / odświeżenie",shape=box,fontsize=10];
+U -> e0 [label=" ",style=invis];
+e0 -> S [label="1",style=solid];
+S -> e1 [label=" ",style=invis];
+e1 -> A [label="2",style=solid];
+A -> e2 [label=" ",style=invis];
+e2 -> A [label="3",style=solid];
+A -> e3 [label=" ",style=invis];
+e3 -> D [label="4",style=solid];
+D -> e4 [label=" ",style=invis];
+e4 -> A [label="5",style=dashed];
+A -> e5 [label=" ",style=invis];
+e5 -> S [label="6",style=dashed];
+S -> e6 [label=" ",style=invis];
+e6 -> U [label="7",style=dashed];
+e0 -> e1 -> e2 -> e3 -> e4 -> e5 -> e6 [style=invis,weight=10];
+}

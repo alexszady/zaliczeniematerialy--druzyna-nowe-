@@ -1,0 +1,21 @@
+digraph G {
+graph [rankdir=LR, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.65", splines="ortho", fontname="Arial", labelloc="t", fontsize=20, labeljust="c"];
+node [fontname="Arial", fontsize=11, shape=box, style="rounded,filled", fillcolor="#F4F7FB", color="#334155", fontcolor="#0F172A", margin="0.13,0.09"];
+edge [fontname="Arial", fontsize=9, color="#475569", fontcolor="#334155", arrowsize=0.7];
+
+U [label="Użytkownik", shape=plaintext]; A [label="Administrator / Trener", shape=plaintext];
+subgraph cluster_system { label="SYSTEM ZARZĄDZANIA DRUŻYNĄ PIŁKARSKĄ"; color="#64748B"; style="rounded";
+manageP [label="Zarządzaj zawodnikami",shape=ellipse]; addP [label="Dodaj zawodnika",shape=ellipse]; editP [label="Edytuj zawodnika",shape=ellipse]; delP [label="Usuń zawodnika",shape=ellipse];
+manageM [label="Zarządzaj meczami",shape=ellipse]; addM [label="Dodaj mecz",shape=ellipse]; editM [label="Edytuj mecz",shape=ellipse]; delM [label="Usuń mecz",shape=ellipse];
+viewP [label="Wyświetl zawodników",shape=ellipse]; stats [label="Wyświetl statystyki",shape=ellipse]; scorers [label="Wyświetl tabelę strzelców",shape=ellipse]; sched [label="Wyświetl terminarz",shape=ellipse];
+input [label="Wprowadź dane",shape=ellipse]; validate [label="Waliduj dane",shape=ellipse]; save [label="Zapisz dane",shape=ellipse]; read [label="Pobierz dane",shape=ellipse];
+}
+U -> viewP [dir=none]; U -> stats [dir=none]; U -> scorers [dir=none]; U -> sched [dir=none];
+A -> manageP [dir=none]; A -> manageM [dir=none]; A -> viewP [dir=none]; A -> stats [dir=none]; A -> scorers [dir=none]; A -> sched [dir=none];
+manageP -> addP [style=dashed,label="obejmuje"]; manageP -> editP [style=dashed]; manageP -> delP [style=dashed];
+manageM -> addM [style=dashed,label="obejmuje"]; manageM -> editM [style=dashed]; manageM -> delM [style=dashed];
+addP -> input [style=dashed,label="include"]; addP -> validate [style=dashed]; addP -> save [style=dashed];
+editP -> input [style=dashed]; editP -> validate [style=dashed]; editP -> save [style=dashed];
+viewP -> read [style=dashed]; stats -> read [style=dashed]; scorers -> read [style=dashed]; sched -> read [style=dashed];
+
+}
