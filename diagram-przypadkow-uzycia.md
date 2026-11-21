@@ -1,11 +1,63 @@
-# Diagram przypadków użycia — Football Manager
+# Diagram przypadków użycia – System zarządzania drużyną piłkarską
 
-Diagram obejmuje funkcje dostępne w aktualnym interfejsie WWW: przeglądanie zawodników, dodawanie i usuwanie zawodników, podgląd statystyk, terminarz, dodawanie i usuwanie meczów oraz tabelę strzelców.
+## Diagram podstawowy
 
-![Diagram przypadków użycia](diagramy/png/01_przypadki_uzycia.png)
+```mermaid
+flowchart LR
 
-**Aktor:** Użytkownik aplikacji. Projekt nie posiada logowania ani autoryzacji, dlatego nie rozróżnia technicznie ról użytkownika i administratora.
+    U["Użytkownik"]
+    A["Administrator / Trener"]
 
-## Zakres dostępny wyłącznie przez API
+    subgraph S["SYSTEM ZARZĄDZANIA DRUŻYNĄ PIŁKARSKĄ"]
 
-Endpointy `PUT /api/players/:id` i `PUT /api/matches/:id` istnieją w backendzie, ale aktualny interfejs WWW nie zawiera formularzy edycji. Z tego powodu pokazano je osobno jako operacje inicjowane przez klienta REST API na diagramie rozszerzonym.
+        UC1(("Wyświetl zawodników"))
+        UC2(("Wyświetl statystyki"))
+        UC3(("Wyświetl terminarz"))
+        UC4(("Wyświetl tabelę strzelców"))
+        UC5(("Dodaj zawodnika"))
+        UC6(("Edytuj zawodnika"))
+        UC7(("Usuń zawodnika"))
+        UC8(("Dodaj mecz"))
+        UC9(("Edytuj mecz"))
+        UC10(("Usuń mecz"))
+
+    end
+
+    U --- UC1
+    U --- UC2
+    U --- UC3
+    U --- UC4
+
+    A --- UC1
+    A --- UC2
+    A --- UC3
+    A --- UC4
+    A --- UC5
+    A --- UC6
+    A --- UC7
+    A --- UC8
+    A --- UC9
+    A --- UC10
+```
+
+## Aktorzy
+
+### Użytkownik
+
+Może:
+
+- wyświetlać zawodników,
+- przeglądać statystyki,
+- przeglądać terminarz,
+- przeglądać tabelę strzelców.
+
+### Administrator / Trener
+
+Może dodatkowo:
+
+- dodawać zawodników,
+- edytować zawodników,
+- usuwać zawodników,
+- dodawać mecze,
+- edytować mecze,
+- usuwać mecze.

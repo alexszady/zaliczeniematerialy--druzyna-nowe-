@@ -1,56 +1,28 @@
-# Football Manager — system zarządzania drużyną piłkarską
+# System zarządzania drużyną piłkarską
 
-Aplikacja internetowa do ewidencji zawodników, prezentowania statystyk, prowadzenia terminarza spotkań i wyświetlania tabeli strzelców.
+Aplikacja webowa do prowadzenia listy zawodników, statystyk, tabeli strzelców i terminarza meczów. Projekt wykorzystuje Node.js, Express i SQLite.
 
-## Technologie
-
-HTML5, CSS3, JavaScript, Node.js, Express.js i SQLite.
+## Wymagania zaliczeniowe
+1. Repozytorium i opis projektu — `README.md`.
+2. Przypadki użycia — pliki `diagram-przypadkow-uzycia*.md` oraz `docs/przypadki-uzycia/`.
+3. Diagramy aktywności — `diagramy/png/` i źródła Graphviz.
+4. Diagramy sekwencji — `diagramy/png/` i źródła Graphviz.
+5. Diagram klas — `diagramy/png/04_diagram_klas.png`.
+6. Diagram ERD — `diagramy/png/03_erd_baza_danych.png`.
+7. Dokumentacja — `docs/Dokumentacja_projektu.pdf`, `.docx` i `.md`.
 
 ## Uruchomienie
-
-Wymagany Node.js 18+ oraz npm.
-
+W katalogu z `package.json` wykonaj:
 ```bash
 npm install
 npm start
 ```
+Następnie otwórz `http://localhost:3000`.
 
-Otwórz `http://localhost:3000`. Baza `database.db` oraz tabele tworzą się automatycznie. Przykładowe dane dodawane są tylko wtedy, gdy odpowiednia tabela jest pusta.
+Baza `database.db` tworzy się automatycznie. Nie dodawaj `node_modules/` ani `database.db` do repozytorium.
 
-## Funkcje interfejsu
-
-- Dashboard: liczba zawodników, gole, asysty i mecze.
-- Zawodnicy: wyświetlanie, dodawanie i usuwanie.
-- Terminarz: wyświetlanie, dodawanie i usuwanie meczów.
-- Strzelcy: ranking według liczby goli.
-
-Backend udostępnia ponadto endpointy `PUT` do aktualizacji zawodnika i meczu, ale aktualny interfejs WWW nie ma formularzy edycji.
-
-## API
-
-| Metoda | Endpoint | Działanie |
-|---|---|---|
-| GET | `/api/players` | Lista zawodników |
-| POST | `/api/players` | Dodanie zawodnika |
-| PUT | `/api/players/:id` | Aktualizacja zawodnika (API) |
-| DELETE | `/api/players/:id` | Usunięcie zawodnika |
-| GET | `/api/matches` | Lista meczów |
-| POST | `/api/matches` | Dodanie meczu |
-| PUT | `/api/matches/:id` | Aktualizacja meczu (API) |
-| DELETE | `/api/matches/:id` | Usunięcie meczu |
-
-## Dokumentacja i diagramy
-
-- `docs/wymagania.md` — wymagania funkcjonalne i niefunkcjonalne.
-- `docs/aktorzy.md` — aktorzy i ograniczenia ról.
-- `docs/przypadki-uzycia/` — scenariusze przypadków użycia.
-- `diagramy/png/` — diagramy w PNG i SVG.
-- `diagramy/zrodla_dot/` — edytowalne źródła diagramów Graphviz.
-- `diagramy/sekwencje/` — diagramy sekwencji Mermaid.
-- `docs/` — architektura, instalacja, instrukcja użytkownika i plan testów.
-
-## Struktura
-
-`server.js` — backend i API; `public/` — frontend; `database.db` — lokalna baza generowana przy uruchomieniu.
-
-Nie dodawaj do repozytorium `node_modules/` ani lokalnego pliku `database.db`.
+## Ważne ograniczenia
+- Brak logowania i autoryzacji.
+- Edycja zawodników i meczów jest dostępna przez API PUT, ale nie przez formularz WWW.
+- Tabele `players` i `matches` są niezależne — nie mają relacji ani kluczy obcych.
+- Testy opisane w dokumentacji są planem; wyniki należy uzupełnić po faktycznym wykonaniu.
